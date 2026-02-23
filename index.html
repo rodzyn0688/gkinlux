@@ -189,45 +189,69 @@
         .reveal.active { opacity: 1; transform: translateY(0); }
 
         /* O FIRMIE */
-        .about-grid { background: var(--bg-element); padding: 50px; border-radius: 8px; box-shadow: var(--shadow-card); border-left: 5px solid var(--primary-color); transition: background-color 0.4s ease; }
+        .about-grid { background: var(--bg-element); padding: 50px; border-radius: 12px; box-shadow: var(--shadow-card); border-top: 5px solid var(--primary-color); transition: background-color 0.4s ease; }
         .about-text p { font-size: 1.15rem; color: var(--text-muted); margin-bottom: 15px; }
 
         /* USŁUGI (KAFELKI) */
         .bg-light-gray { background-color: var(--bg-alt); transition: background-color 0.4s ease;}
         .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-        .service-card { background: var(--bg-element); padding: 40px 30px; border-radius: 8px; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.04); transition: var(--transition); border-bottom: 3px solid transparent; }
+        .service-card { background: var(--bg-element); padding: 40px 30px; border-radius: 12px; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.04); transition: var(--transition); border-bottom: 3px solid transparent; }
         .service-card:hover { transform: translateY(-10px); border-bottom: 3px solid var(--primary-color); box-shadow: var(--shadow-card); }
         .service-icon { font-size: 3rem; color: var(--primary-color); margin-bottom: 20px; }
         .service-card h3 { color: var(--text-heading); font-size: 1.3rem; margin-bottom: 15px; }
         .service-card p { color: var(--text-muted); font-size: 0.95rem; }
 
-        /* CERTYFIKATY */
+        /* =========================================
+           CERTYFIKATY - NOWY, ULEPSZONY WYGLĄD
+           ========================================= */
         .bg-dark-blue { background-color: var(--dark-blue-solid); color: var(--white); }
-        .bg-dark-blue .section-title { color: #ffffff !important; }
+        .bg-dark-blue .section-title { color: #ffffff !important; margin-bottom: 30px; }
         
+        /* Wyśrodkowana "pigułka" z instytucjami */
+        .cert-logos-wrapper {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-bottom: 50px;
+        }
+        .cert-logos { 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 15px; 
+            background: rgba(255, 255, 255, 0.05); 
+            padding: 12px 30px; 
+            border-radius: 50px; 
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .cert-logos i { font-size: 2rem; color: var(--arc-blue); }
+        .cert-logos span { font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 1.1rem; color: #ffffff !important; }
+        .cert-logos span strong { font-weight: 800; color: var(--primary-color); }
+
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+
+        /* Lewa karta - zmiana z border-left na border-top (lepsze RWD) */
+        .cert-info-card { background: rgba(255,255,255,0.05); padding: 40px; border-radius: 12px; border-top: 5px solid var(--primary-color); }
+        .cert-info-card h3 { color: #ffffff !important; margin-bottom: 25px; font-size: 1.5rem; }
+        .cert-info-card ul { list-style: none; padding: 0; color: #e2e8f0; margin: 0; }
+        .cert-info-card ul li { margin-bottom: 20px; font-size: 1.05rem; padding-left: 35px; position: relative; line-height: 1.6; }
+        .cert-info-card ul li i { position: absolute; left: 0; top: 5px; color: var(--primary-color); font-size: 1.2rem; }
+
+        /* Prawa karta (PDF) */
+        .pdf-card { background: var(--bg-element); padding: 40px; border-radius: 12px; color: var(--text-main); transition: background-color 0.4s ease; box-shadow: var(--shadow-card); }
+        .pdf-card h3 { color: var(--text-heading); font-size: 1.5rem; margin-bottom: 15px;}
+        .pdf-card p { margin-bottom: 25px; color: var(--text-muted); }
+        .pdf-list { display: flex; flex-direction: column; gap: 12px; }
         
-        .cert-logos { display: flex; gap: 20px; margin-bottom: 30px; align-items: center; }
-        .cert-logos i { font-size: 2.5rem; color: #aaccff; }
-        .cert-logos span { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 1.2rem; color: #ffffff !important; }
-
-        .cert-info-card { background: rgba(255,255,255,0.05); padding: 40px; border-radius: 8px; border-left: 5px solid var(--primary-color); }
-        .cert-info-card h3 { color: #ffffff !important; }
-        .cert-info-card ul { list-style: none; padding: 0; color: #e2e8f0; }
-        .cert-info-card ul li { margin-bottom: 15px; font-size: 1.05rem; padding-left: 30px; position: relative; }
-        .cert-info-card ul li i { position: absolute; left: 0; top: 4px; color: var(--primary-color); }
-
-        .pdf-card { background: var(--bg-element); padding: 40px; border-radius: 8px; color: var(--text-main); transition: background-color 0.4s ease; }
-        .pdf-card h3 { color: var(--text-heading); }
-        .pdf-list { display: flex; flex-direction: column; gap: 12px; margin-top: 25px; }
-        .pdf-list a { display: flex; align-items: center; background: var(--bg-body); padding: 15px 20px; text-decoration: none; color: var(--text-main); border: 1px solid var(--border-color); border-radius: 6px; transition: var(--transition); font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.9rem; }
-        .pdf-list a:hover { background: var(--primary-color); color: var(--white); border-color: var(--primary-color); transform: translateX(8px); }
-        .pdf-list a i { color: #e74c3c; font-size: 1.3rem; margin-right: 15px; transition: color 0.3s;}
+        /* Przyciski PDF */
+        .pdf-list a { display: flex; align-items: center; background: var(--bg-body); padding: 15px 20px; text-decoration: none; color: var(--text-main); border: 1px solid var(--border-color); border-radius: 8px; transition: var(--transition); font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.95rem; }
+        .pdf-list a:hover { background: var(--primary-color); color: var(--white); border-color: var(--primary-color); transform: translateY(-3px); box-shadow: 0 5px 15px rgba(255, 107, 0, 0.2); }
+        .pdf-list a i { color: #ff4757; font-size: 1.5rem; margin-right: 15px; transition: color 0.3s;}
         .pdf-list a:hover i { color: #ffffff; }
 
         /* KONTAKT I FORMULARZ */
         .contact-wrapper { display: grid; grid-template-columns: 1fr 1.2fr; gap: 50px; }
-        .contact-info-box { background: var(--dark-blue-light-solid); color: var(--white); padding: 40px; border-radius: 8px; }
+        .contact-info-box { background: var(--dark-blue-light-solid); color: var(--white); padding: 40px; border-radius: 12px; }
         .contact-info-box h3 { color: var(--primary-color); margin-bottom: 30px; font-size: 1.8rem; }
         
         .c-item { display: flex; align-items: flex-start; margin-bottom: 25px; }
@@ -237,7 +261,7 @@
         .c-item a:hover { color: var(--white); }
 
         /* FORMULARZ */
-        .contact-form { background: var(--bg-element); padding: 40px; border-radius: 8px; box-shadow: var(--shadow-card); transition: background-color 0.4s ease; }
+        .contact-form { background: var(--bg-element); padding: 40px; border-radius: 12px; box-shadow: var(--shadow-card); transition: background-color 0.4s ease; border-top: 5px solid var(--primary-color); }
         .form-group { margin-bottom: 20px; }
         .form-group label { display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-heading); }
         .form-group input, .form-group textarea { width: 100%; padding: 12px 15px; border: 1px solid var(--border-color); border-radius: 4px; background-color: var(--bg-input); color: var(--text-main); font-family: 'Open Sans', sans-serif; font-size: 1rem; transition: var(--transition); box-sizing: border-box; }
@@ -258,30 +282,30 @@
         }
 
         @media (max-width: 850px) {
-            .mobile-btn { display: block; }
+            .mobile-btn { display: block; } 
             
+            /* Stylizacja rozwijanego menu na telefonie */
             .nav-menus {
-                display: none;
-                width: 100%;
-                flex-direction: column;
-                order: 3; 
-                padding-top: 15px;
-                border-top: 1px solid var(--border-color);
-                margin-top: 15px;
+                display: none; width: 100%; flex-direction: column; order: 3; 
+                padding-top: 15px; border-top: 1px solid var(--border-color); margin-top: 15px;
             }
             .nav-menus.active { display: flex; }
             .nav-menu { flex-direction: column; align-items: center; gap: 15px; width: 100%; }
             
             header { flex-wrap: wrap; }
             .header-controls { margin-left: auto; display: flex; align-items: center; }
-            
-            /* Lepsze ułożenie odznaki certyfikatów na tabletach/telefonach */
+
+            /* Certyfikaty na tablecie/telefonie - dostosowanie "pigułki" */
+            .cert-logos-wrapper { margin-bottom: 30px; }
             .cert-logos {
                 flex-direction: column;
                 text-align: center;
-                gap: 15px;
+                border-radius: 15px;
+                padding: 20px;
+                gap: 10px;
             }
-            .cert-logos span { font-size: 1.05rem !important; }
+            .cert-logos i { font-size: 2.5rem; }
+            .cert-logos span { font-size: 1rem !important; }
         }
 
         @media (max-width: 480px) { 
@@ -292,26 +316,33 @@
             
             .btn { width: 100%; box-sizing: border-box; margin: 8px 0; }
             
+            /* Zmniejszone marginesy wewnętrzne kart */
             .contact-info-box, .contact-form, .about-grid, .pdf-card { 
                 padding: 30px 20px; 
             }
             
-            /* Zmniejszenie marginesów wewnętrznych dla bloku z Certyfikatami */
+            /* Poprawki sekcji Certyfikatów dla bardzo małych ekranów */
             .cert-info-card {
-                padding: 25px 15px;
+                padding: 30px 20px;
             }
-            /* Poprawa czytelności tekstów w liście uprawnień */
             .cert-info-card ul li {
                 font-size: 0.95rem;
-                padding-left: 25px;
-                margin-bottom: 12px;
-                line-height: 1.5;
+                margin-bottom: 15px;
+                padding-left: 30px;
+            }
+            .cert-info-card ul li i {
+                font-size: 1.1rem;
+                top: 4px;
             }
             
-            /* Zmniejszenie linków z plikami PDF na wąskich ekranach */
+            /* Kompresja linków PDF */
             .pdf-list a {
-                padding: 12px;
-                font-size: 0.8rem;
+                padding: 12px 15px;
+                font-size: 0.85rem;
+            }
+            .pdf-list a i {
+                font-size: 1.3rem;
+                margin-right: 12px;
             }
         }
     </style>
@@ -481,9 +512,13 @@
             <div class="lang-en"><h2 class="section-title">Qualifications & Certificates</h2></div>
             <div class="lang-pl"><h2 class="section-title">Kwalifikacje i Certyfikaty</h2></div>
             
-            <div class="cert-logos">
-                <i class="fa-solid fa-certificate"></i>
-                <span>Gecertificeerd door / Certified by: DNV & Lloyd's Register</span>
+            <div class="cert-logos-wrapper">
+                <div class="cert-logos">
+                    <i class="fa-solid fa-award"></i>
+                    <span class="lang-nl">Gecertificeerd door: <strong>DNV & Lloyd's Register</strong></span>
+                    <span class="lang-en">Certified by: <strong>DNV & Lloyd's Register</strong></span>
+                    <span class="lang-pl">Certyfikowane przez: <strong>DNV & Lloyd's Register</strong></span>
+                </div>
             </div>
 
             <div class="grid-2">
