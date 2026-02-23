@@ -152,7 +152,6 @@
         #sparks-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
         .hero-content { position: relative; z-index: 2; width: 100%; max-width: 1000px; }
         
-        /* Zoptymalizowana wielkość czcionki dla H1 - działa idealnie na telefonie i PC */
         .hero h1 { 
             font-size: clamp(2rem, 5vw, 3.8rem); 
             line-height: 1.2;
@@ -259,14 +258,13 @@
         }
 
         @media (max-width: 850px) {
-            .mobile-btn { display: block; } /* Pokaż ikonę hamburgera */
+            .mobile-btn { display: block; }
             
-            /* Stylizacja rozwijanego menu na telefonie */
             .nav-menus {
                 display: none;
                 width: 100%;
                 flex-direction: column;
-                order: 3; /* Przenosi pod logo i przełączniki */
+                order: 3; 
                 padding-top: 15px;
                 border-top: 1px solid var(--border-color);
                 margin-top: 15px;
@@ -276,19 +274,44 @@
             
             header { flex-wrap: wrap; }
             .header-controls { margin-left: auto; display: flex; align-items: center; }
+            
+            /* Lepsze ułożenie odznaki certyfikatów na tabletach/telefonach */
+            .cert-logos {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            .cert-logos span { font-size: 1.05rem !important; }
         }
 
         @media (max-width: 480px) { 
             section { padding: 60px 5%; }
-            .logo img { height: 50px; } /* Mniejsze logo */
+            .logo img { height: 50px; } 
             .section-title { font-size: 1.8rem; }
-            .lang-switcher button { padding: 4px 6px; font-size: 0.85rem; } /* Mniejsze przyciski języków */
+            .lang-switcher button { padding: 4px 6px; font-size: 0.85rem; } 
             
-            /* Pełna szerokość przycisków w Hero i formularzu */
             .btn { width: 100%; box-sizing: border-box; margin: 8px 0; }
             
-            .contact-info-box, .contact-form, .about-grid, .pdf-card, .cert-info-card { 
+            .contact-info-box, .contact-form, .about-grid, .pdf-card { 
                 padding: 30px 20px; 
+            }
+            
+            /* Zmniejszenie marginesów wewnętrznych dla bloku z Certyfikatami */
+            .cert-info-card {
+                padding: 25px 15px;
+            }
+            /* Poprawa czytelności tekstów w liście uprawnień */
+            .cert-info-card ul li {
+                font-size: 0.95rem;
+                padding-left: 25px;
+                margin-bottom: 12px;
+                line-height: 1.5;
+            }
+            
+            /* Zmniejszenie linków z plikami PDF na wąskich ekranach */
+            .pdf-list a {
+                padding: 12px;
+                font-size: 0.8rem;
             }
         }
     </style>
