@@ -105,9 +105,14 @@
             transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         
-        .logo:hover { transform: scale(1.1); }
-        .logo:hover img { transform: scale(1.2); }
+        .logo:hover { transform: scale(1.05); }
+        .logo:hover img { transform: scale(1.1); }
 
+        /* NAWIGACJA */
+        .nav-menus {
+            display: flex;
+            align-items: center;
+        }
         .nav-menu { display: flex; gap: 20px; list-style: none; padding: 0; margin: 0; }
         .nav-menu a { text-decoration: none; color: var(--text-main); font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 0.95rem; transition: var(--transition); }
         .nav-menu a:hover { color: var(--primary-color); }
@@ -121,12 +126,21 @@
         }
         .theme-toggle:hover { color: var(--primary-color); }
 
+        .lang-switcher { display: flex; gap: 5px; }
         .lang-switcher button {
             background: transparent; color: var(--text-muted); border: 2px solid transparent;
             font-family: 'Montserrat', sans-serif; font-weight: 700; padding: 5px 10px; cursor: pointer; border-radius: 4px; transition: var(--transition);
         }
         .lang-switcher button:hover { color: var(--primary-color); }
         .lang-switcher button.active { color: var(--primary-color); border: 2px solid var(--primary-color); background: rgba(255, 107, 0, 0.05); }
+
+        /* Przycisk Hamburger (ukryty na PC) */
+        .mobile-btn {
+            display: none;
+            background: transparent; border: none; color: var(--text-heading); font-size: 1.8rem;
+            cursor: pointer; padding: 5px; transition: var(--transition); margin-left: 5px;
+        }
+        .mobile-btn:hover { color: var(--primary-color); }
 
         /* HERO SECTION */
         .hero {
@@ -136,20 +150,33 @@
             text-align: center; color: #ffffff; padding: 0 20px; overflow: hidden;
         }
         #sparks-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
-        .hero-content { position: relative; z-index: 2; }
-        .hero h1 { font-size: 3.8rem; margin-bottom: 20px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; text-shadow: 0 4px 10px rgba(0,0,0,0.5); color: #ffffff; }
-        .hero p { font-size: 1.25rem; max-width: 700px; margin: 0 auto 30px auto; color: #d1d8e0; }
+        .hero-content { position: relative; z-index: 2; width: 100%; max-width: 1000px; }
+        
+        /* Zoptymalizowana wielkość czcionki dla H1 - działa idealnie na telefonie i PC */
+        .hero h1 { 
+            font-size: clamp(2rem, 5vw, 3.8rem); 
+            line-height: 1.2;
+            margin-bottom: 20px; 
+            font-weight: 800; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            text-shadow: 0 4px 10px rgba(0,0,0,0.5); 
+            color: #ffffff;
+            word-wrap: break-word; 
+        }
+        .hero p { font-size: clamp(1rem, 3vw, 1.25rem); max-width: 700px; margin: 0 auto 30px auto; color: #d1d8e0; }
 
         .btn {
             background: var(--primary-color); color: #ffffff !important; padding: 14px 30px; text-decoration: none;
             font-family: 'Montserrat', sans-serif; font-weight: 700; border-radius: 4px; margin: 10px;
-            display: inline-block; transition: var(--transition); text-transform: uppercase; letter-spacing: 1px; border: 2px solid var(--primary-color); cursor: pointer;
+            display: inline-flex; justify-content: center; align-items: center; gap: 10px;
+            transition: var(--transition); text-transform: uppercase; letter-spacing: 1px; border: 2px solid var(--primary-color); cursor: pointer;
         }
         .btn:hover {
             background: var(--primary-hover); border-color: var(--primary-hover); transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(255, 107, 0, 0.3), 0 0 15px var(--arc-blue);
         }
-        .btn-outline { background: transparent; color: #ffffff !important; } /* GWARANCJA BIAŁEGO TEKSTU */
+        .btn-outline { background: transparent; color: #ffffff !important; }
         .btn-outline:hover { background: var(--primary-color); }
 
         /* SEKCJE WSPÓLNE & ANIMACJE */
@@ -168,7 +195,7 @@
 
         /* USŁUGI (KAFELKI) */
         .bg-light-gray { background-color: var(--bg-alt); transition: background-color 0.4s ease;}
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
         .service-card { background: var(--bg-element); padding: 40px 30px; border-radius: 8px; text-align: center; box-shadow: 0 5px 20px rgba(0,0,0,0.04); transition: var(--transition); border-bottom: 3px solid transparent; }
         .service-card:hover { transform: translateY(-10px); border-bottom: 3px solid var(--primary-color); box-shadow: var(--shadow-card); }
         .service-icon { font-size: 3rem; color: var(--primary-color); margin-bottom: 20px; }
@@ -216,24 +243,61 @@
         .form-group label { display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-heading); }
         .form-group input, .form-group textarea { width: 100%; padding: 12px 15px; border: 1px solid var(--border-color); border-radius: 4px; background-color: var(--bg-input); color: var(--text-main); font-family: 'Open Sans', sans-serif; font-size: 1rem; transition: var(--transition); box-sizing: border-box; }
         .form-group input:focus, .form-group textarea:focus { border-color: var(--primary-color); outline: none; box-shadow: 0 0 5px rgba(255, 107, 0, 0.2); }
-        .contact-form button { width: 100%; border: none; font-size: 1.1rem; color: #ffffff !important; }
+        .contact-form button { width: 100%; border: none; font-size: 1.1rem; color: #ffffff !important; display: flex; justify-content: center; align-items: center; gap: 10px; }
         
-        /* Nota RODO / AVG */
         .privacy-note { font-size: 0.8rem; color: var(--text-muted); margin-top: 15px; text-align: center; }
 
         /* FOOTER */
         footer { background: #04080e; color: #6c7a8c; text-align: center; padding: 25px 5%; font-size: 0.95rem; }
 
-        /* RESPONSIVE */
-        @media (max-width: 992px) { .contact-wrapper { grid-template-columns: 1fr; } .grid-2 { grid-template-columns: 1fr; } }
-        @media (max-width: 768px) { .hero h1 { font-size: 2.5rem; } header { flex-direction: column; gap: 15px; } .nav-menu { flex-wrap: wrap; justify-content: center; } .section-title { font-size: 2rem; } .logo img { height: 60px; } }
+        /* =========================================
+           RESPONSYWNOŚĆ - WIDOK MOBILNY / TABLETY
+           ========================================= */
+        @media (max-width: 992px) { 
+            .contact-wrapper { grid-template-columns: 1fr; } 
+            .grid-2 { grid-template-columns: 1fr; } 
+        }
+
+        @media (max-width: 850px) {
+            .mobile-btn { display: block; } /* Pokaż ikonę hamburgera */
+            
+            /* Stylizacja rozwijanego menu na telefonie */
+            .nav-menus {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                order: 3; /* Przenosi pod logo i przełączniki */
+                padding-top: 15px;
+                border-top: 1px solid var(--border-color);
+                margin-top: 15px;
+            }
+            .nav-menus.active { display: flex; }
+            .nav-menu { flex-direction: column; align-items: center; gap: 15px; width: 100%; }
+            
+            header { flex-wrap: wrap; }
+            .header-controls { margin-left: auto; display: flex; align-items: center; }
+        }
+
+        @media (max-width: 480px) { 
+            section { padding: 60px 5%; }
+            .logo img { height: 50px; } /* Mniejsze logo */
+            .section-title { font-size: 1.8rem; }
+            .lang-switcher button { padding: 4px 6px; font-size: 0.85rem; } /* Mniejsze przyciski języków */
+            
+            /* Pełna szerokość przycisków w Hero i formularzu */
+            .btn { width: 100%; box-sizing: border-box; margin: 8px 0; }
+            
+            .contact-info-box, .contact-form, .about-grid, .pdf-card, .cert-info-card { 
+                padding: 30px 20px; 
+            }
+        }
     </style>
 </head>
 <body class="lang-nl dark-mode">
     
     <script>
         if (localStorage.getItem('theme') === null) {
-            localStorage.setItem('theme', 'dark'); // Wymuszamy tryb ciemny u nowych odwiedzających
+            localStorage.setItem('theme', 'dark'); 
         }
         if (localStorage.getItem('theme') === 'light') {
             document.body.classList.remove('dark-mode');
@@ -247,24 +311,26 @@
             <img src="image_1.png" alt="GK INLUX Logo" onerror="this.outerHTML='GK <span>INLUX</span>'">
         </a>
         
-        <ul class="nav-menu lang-nl">
-            <li><a href="#over-mij">Over Mij</a></li>
-            <li><a href="#diensten">Diensten</a></li>
-            <li><a href="#certificaten">Certificaten</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-        <ul class="nav-menu lang-en">
-            <li><a href="#over-mij">About</a></li>
-            <li><a href="#diensten">Services</a></li>
-            <li><a href="#certificaten">Certificates</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-        <ul class="nav-menu lang-pl">
-            <li><a href="#over-mij">O Firmie</a></li>
-            <li><a href="#diensten">Usługi</a></li>
-            <li><a href="#certificaten">Certyfikaty</a></li>
-            <li><a href="#contact">Kontakt</a></li>
-        </ul>
+        <div class="nav-menus" id="mobile-menu">
+            <ul class="nav-menu lang-nl">
+                <li><a href="#over-mij">Over Mij</a></li>
+                <li><a href="#diensten">Diensten</a></li>
+                <li><a href="#certificaten">Certificaten</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <ul class="nav-menu lang-en">
+                <li><a href="#over-mij">About</a></li>
+                <li><a href="#diensten">Services</a></li>
+                <li><a href="#certificaten">Certificates</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <ul class="nav-menu lang-pl">
+                <li><a href="#over-mij">O Firmie</a></li>
+                <li><a href="#diensten">Usługi</a></li>
+                <li><a href="#certificaten">Certyfikaty</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+            </ul>
+        </div>
 
         <div class="header-controls">
             <div class="lang-switcher">
@@ -274,7 +340,12 @@
             </div>
 
             <button class="theme-toggle" id="theme-btn" onclick="toggleTheme()" title="Schakel thema in/uit">
-                <i class="fa-solid fa-sun"></i> </button>
+                <i class="fa-solid fa-sun"></i>
+            </button>
+
+            <button class="mobile-btn" onclick="toggleMobileMenu()">
+                <i class="fa-solid fa-bars"></i>
+            </button>
         </div>
     </header>
 
@@ -581,6 +652,18 @@
                 icon.className = 'fa-solid fa-moon'; // Księżyc w trybie jasnym
             }
         }
+        
+        // 3. OBSŁUGA MENU MOBILNEGO (Hamburger)
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('active');
+        }
+        
+        // Zamykaj menu po kliknięciu w link na telefonie
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.remove('active');
+            });
+        });
 
         // Inicjalizacja motywu przy załadowaniu dom-tree
         document.addEventListener("DOMContentLoaded", function() {
@@ -596,7 +679,7 @@
             document.getElementById('theme-btn').title = themeTooltips['nl'];
         });
 
-        // 3. SCROLL REVEAL
+        // 4. SCROLL REVEAL
         function reveal() {
             var reveals = document.querySelectorAll(".reveal");
             for (var i = 0; i < reveals.length; i++) {
@@ -611,7 +694,7 @@
         window.addEventListener("scroll", reveal);
         reveal(); // Odpal przy załadowaniu strony
 
-        // 4. ANIMACJA ISKIER (CANVAS)
+        // 5. ANIMACJA ISKIER (CANVAS)
         const canvas = document.getElementById('sparks-canvas');
         const ctx = canvas.getContext('2d');
         function resizeCanvas() { canvas.width = canvas.parentElement.offsetWidth; canvas.height = canvas.parentElement.offsetHeight; }
